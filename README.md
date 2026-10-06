@@ -1,4 +1,4 @@
-﻿# Windows Digital Forensics Investigation
+# Windows Digital Forensics Investigation
 
 A hands-on Windows digital forensics investigation focused on reconstructing suspicious PowerShell activity through endpoint artifacts, filesystem evidence, Registry analysis, timeline correlation, and volatile memory.
 
@@ -74,12 +74,12 @@ Six principal findings were established with high confidence:
 
 | ID | Finding | Assessment | Confidence |
 |---|---|---|---|
-| [F-001](findings/F-001-script-acquisition.txt) | PowerShell script acquisition | Confirmed | High |
-| [F-002](findings/F-002-script-execution.txt) | PowerShell script execution | Confirmed | High |
-| [F-003](findings/F-003-registry-persistence.txt) | User-level Registry persistence | Confirmed | High |
-| [F-004](findings/F-004-deleted-file.txt) | Temporary file creation and deletion | Confirmed | High |
-| [F-005](findings/F-005-notepad-interaction.txt) | PowerShell script opened in Notepad | Confirmed | High |
-| [F-006](findings/F-006-network-transfer.txt) | Controlled network transfer | Confirmed | High |
+| [F-001](findings/F-001-script-acquisition.md) | PowerShell script acquisition | Confirmed | High |
+| [F-002](findings/F-002-script-execution.md) | PowerShell script execution | Confirmed | High |
+| [F-003](findings/F-003-registry-persistence.md) | User-level Registry persistence | Confirmed | High |
+| [F-004](findings/F-004-deleted-file.md) | Temporary file creation and deletion | Confirmed | High |
+| [F-005](findings/F-005-notepad-interaction.md) | PowerShell script opened in Notepad | Confirmed | High |
+| [F-006](findings/F-006-network-transfer.md) | Controlled network transfer | Confirmed | High |
 
 The investigation reconstructed a sequence in which a PowerShell script was transferred to the workstation, executed, associated with a Registry Run-key persistence mechanism, and later opened in Notepad. A temporary file was also created and deleted during the incident window.
 
@@ -153,3 +153,4 @@ The complete case report is available here:
 This project was performed in an isolated home DFIR laboratory using controlled benign activity. No malware was deployed.
 
 The purpose of the project is to demonstrate practical Windows forensic investigation methodology, evidence handling, artifact analysis, timeline reconstruction, cross-artifact correlation, and defensible interpretation of both positive and negative findings.
+

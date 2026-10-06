@@ -1,12 +1,12 @@
-Finding ID: F-004
-Title: Temporary File Creation and Deletion
-Assessment: Confirmed
-Confidence: High
+**Finding ID:** F-004  
+**Title:** Temporary File Creation and Deletion  
+**Assessment:** Confirmed  
+**Confidence:** High
 
-Finding:
+## Finding
 The file project-notes.txt was created in the dfiruser Documents directory, written to, and deleted approximately 15 seconds later.
 
-Evidence:
+## Evidence
 - USN Journal records project-notes.txt FileCreate at 2026-10-05 20:43:41.6285831 UTC.
 - Subsequent USN records show DataExtend and Close activity, indicating data was written to the file.
 - The USN Journal records FileDelete and Close at 2026-10-05 20:43:56.4463318 UTC.
@@ -15,9 +15,11 @@ Evidence:
 - Autopsy independently identified references to project-notes.txt in the USN Journal, NTFS $LogFile, and PowerShell ConsoleHost history.
 - PowerShell history contains commands corresponding to the creation and removal of project-notes.txt.
 
-Interpretation:
+## Interpretation
 The USN Journal preserves the filesystem lifecycle of project-notes.txt even though the corresponding FILE record was no longer available through the acquired MFT. Correlation with PowerShell history and NTFS $LogFile provides additional evidence that the file existed and was subsequently removed.
 
-Limitations:
+## Limitations
 The contents of project-notes.txt were not recovered. USN Journal and $LogFile references establish filesystem activity and filename metadata but should not be interpreted as recovery of the deleted file's contents.
+
+
 

@@ -1,12 +1,12 @@
-Finding ID: F-005
-Title: Script Opened in Notepad
-Assessment: Confirmed
-Confidence: High
+**Finding ID:** F-005  
+**Title:** Script Opened in Notepad  
+**Assessment:** Confirmed  
+**Confidence:** High
 
-Finding:
+## Finding
 The downloaded update-check.ps1 file was opened in Windows Notepad during the incident window.
 
-Evidence:
+## Evidence
 - Sysmon records PowerShell at 2026-10-05 20:44:34.998 UTC executing:
   Start-Process notepad.exe -ArgumentList 'C:\Users\dfiruser\Downloads\update-check.ps1'
 - Sysmon subsequently records Notepad.exe with the command line:
@@ -18,8 +18,10 @@ Evidence:
 - Autopsy identified an update-check.ps1.lnk artifact referencing:
   C:\Users\dfiruser\Downloads\update-check.ps1
 
-Interpretation:
+## Interpretation
 Process telemetry, Prefetch, volatile memory, command history, and shortcut evidence independently associate Notepad with the downloaded PowerShell script. The memory evidence is particularly useful because the Notepad process remained present when volatile memory was acquired.
 
-Limitations:
+## Limitations
 These artifacts establish that Notepad was launched with update-check.ps1 as its target. They do not establish how long the file was viewed or whether its contents were modified in Notepad.
+
+

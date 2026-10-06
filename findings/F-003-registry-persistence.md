@@ -1,12 +1,12 @@
-Finding ID: F-003
-Title: User-Level Registry Persistence
-Assessment: Confirmed
-Confidence: High
+**Finding ID:** F-003  
+**Title:** User-Level Registry Persistence  
+**Assessment:** Confirmed  
+**Confidence:** High
 
-Finding:
+## Finding
 User-level persistence was established through the Windows Run key using the value name UpdateCheck.
 
-Evidence:
+## Evidence
 - Sysmon records reg.exe at 2026-10-05 20:43:05.193 UTC executing:
   reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v UpdateCheck /t REG_SZ /d "powershell.exe -NoProfile -ExecutionPolicy Bypass -File %%USERPROFILE%%\Downloads\update-check.ps1" /f
 - The command executed as WIN11-DFIR\dfiruser.
@@ -18,8 +18,10 @@ Evidence:
 - Prefetch records REG.EXE execution at approximately 20:43:05 UTC.
 - PowerShell ConsoleHost history contains the corresponding reg add command.
 
-Interpretation:
+## Interpretation
 Sysmon establishes that reg.exe was used to create the persistence mechanism, while the acquired user registry hive independently confirms that the UpdateCheck value was present after the command executed. The closely correlated timestamps provide additional support for the finding.
 
-Limitations:
+## Limitations
 The persistence mechanism was established during a controlled simulation. The investigation did not reboot or log the user back in to test whether the Run-key entry subsequently launched the script automatically.
+
+
