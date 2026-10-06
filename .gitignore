@@ -1,0 +1,29 @@
+﻿# Raw forensic evidence
+*.raw
+*.mem
+*.vmem
+*.dmp
+*.E01
+*.e01
+*.vmdk
+
+# Registry hives and transaction logs
+NTUSER.DAT
+SAM
+SECURITY
+SYSTEM
+SOFTWARE
+*.LOG1
+*.LOG2
+
+# Large/raw forensic collections
+KAPE/
+Autopsy/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Windows metadata
+Thumbs.db
+Desktop.ini

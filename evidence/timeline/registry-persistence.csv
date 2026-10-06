@@ -1,0 +1,2 @@
+"UtcTime","Source","Artifact","Value","Data","Finding"
+"2026-10-05 20:43:05.2066401","Registry - NTUSER.DAT","HKCU\Software\Microsoft\Windows\CurrentVersion\Run","UpdateCheck","powershell.exe -NoProfile -ExecutionPolicy Bypass -File %USERPROFILE%\Downloads\update-check.ps1","User-level Run-key persistence present in acquired hive"
