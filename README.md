@@ -103,7 +103,7 @@ Independent examination of the acquired user Registry hive confirmed the `Update
 
 ### Deleted File Activity
 
-USN Journal analysis preserved the lifecycle of `project-notes.txt`, including its creation, data write and subsequent deletion, despite the filename no longer being available through the parsed MFT.
+USN Journal analysis preserved the lifecycle of `project-notes.md`, including its creation, data write and subsequent deletion, despite the filename no longer being available through the parsed MFT.
 
 ![USN Journal evidence showing deleted file activity](evidence/screenshots/12-usn-deleted-file-evidence.png)
 
@@ -132,12 +132,12 @@ evidence/
     timeline/
 
 findings/
-    F-001-script-acquisition.txt
-    F-002-script-execution.txt
-    F-003-registry-persistence.txt
-    F-004-deleted-file.txt
-    F-005-notepad-interaction.txt
-    F-006-network-transfer.txt
+    F-001-script-acquisition.md
+    F-002-script-execution.md
+    F-003-registry-persistence.md
+    F-004-deleted-file.md
+    F-005-notepad-interaction.md
+    F-006-network-transfer.md
 ```
 
 The repository contains curated investigation outputs only. Raw memory, complete filesystem metadata, Registry hives and other acquired forensic evidence are intentionally excluded.
@@ -153,4 +153,5 @@ The complete case report is available here:
 This project was performed in an isolated home DFIR laboratory using controlled benign activity. No malware was deployed.
 
 The purpose of the project is to demonstrate practical Windows forensic investigation methodology, evidence handling, artifact analysis, timeline reconstruction, cross-artifact correlation, and defensible interpretation of both positive and negative findings.
+
 
