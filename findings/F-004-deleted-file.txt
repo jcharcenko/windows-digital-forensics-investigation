@@ -12,11 +12,12 @@ Evidence:
 - The USN Journal records FileDelete and Close at 2026-10-05 20:43:56.4463318 UTC.
 - The file is associated with MFT entry 34472, sequence 4 in the USN records.
 - The corresponding filename was not present in the parsed acquired MFT, and MFTECmd could not locate FILE record 34472-4.
-- Autopsy independently identified references to project-notes.txt in the USN Journal, NTFS , and PowerShell ConsoleHost history.
+- Autopsy independently identified references to project-notes.txt in the USN Journal, NTFS $LogFile, and PowerShell ConsoleHost history.
 - PowerShell history contains commands corresponding to the creation and removal of project-notes.txt.
 
 Interpretation:
-The USN Journal preserves the filesystem lifecycle of project-notes.txt even though the corresponding FILE record was no longer available through the acquired MFT. Correlation with PowerShell history and NTFS  provides additional evidence that the file existed and was subsequently removed.
+The USN Journal preserves the filesystem lifecycle of project-notes.txt even though the corresponding FILE record was no longer available through the acquired MFT. Correlation with PowerShell history and NTFS $LogFile provides additional evidence that the file existed and was subsequently removed.
 
 Limitations:
-The contents of project-notes.txt were not recovered. USN Journal and  references establish filesystem activity and filename metadata but should not be interpreted as recovery of the deleted file's contents.
+The contents of project-notes.txt were not recovered. USN Journal and $LogFile references establish filesystem activity and filename metadata but should not be interpreted as recovery of the deleted file's contents.
+

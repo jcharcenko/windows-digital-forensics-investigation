@@ -72,18 +72,54 @@ Evidence examined during the investigation included:
 
 Six principal findings were established with high confidence:
 
-| ID | Finding | Assessment |
-|---|---|---|
-| F-001 | PowerShell script acquisition | Confirmed |
-| F-002 | PowerShell script execution | Confirmed |
-| F-003 | User-level Registry persistence | Confirmed |
-| F-004 | Temporary file creation and deletion | Confirmed |
-| F-005 | PowerShell script opened in Notepad | Confirmed |
-| F-006 | Controlled network transfer | Confirmed |
+| ID | Finding | Assessment | Confidence |
+|---|---|---|---|
+| [F-001](findings/F-001-script-acquisition.txt) | PowerShell script acquisition | Confirmed | High |
+| [F-002](findings/F-002-script-execution.txt) | PowerShell script execution | Confirmed | High |
+| [F-003](findings/F-003-registry-persistence.txt) | User-level Registry persistence | Confirmed | High |
+| [F-004](findings/F-004-deleted-file.txt) | Temporary file creation and deletion | Confirmed | High |
+| [F-005](findings/F-005-notepad-interaction.txt) | PowerShell script opened in Notepad | Confirmed | High |
+| [F-006](findings/F-006-network-transfer.txt) | Controlled network transfer | Confirmed | High |
 
 The investigation reconstructed a sequence in which a PowerShell script was transferred to the workstation, executed, associated with a Registry Run-key persistence mechanism, and later opened in Notepad. A temporary file was also created and deleted during the incident window.
 
 These conclusions were reached through correlation of multiple forensic artifacts rather than reliance on a single telemetry source.
+
+## Evidence Highlights
+
+The investigation correlated evidence across endpoint telemetry, filesystem metadata, Registry artifacts and volatile memory. The examples below show several of the principal artifacts used to reconstruct the activity.
+
+### PowerShell Script Execution
+
+Sysmon recorded `powershell.exe` executing the downloaded `update-check.ps1` script with `ExecutionPolicy Bypass`.
+
+![Sysmon evidence showing PowerShell script execution](evidence/screenshots/09-sysmon-script-execution.png)
+
+### Registry Persistence
+
+Independent examination of the acquired user Registry hive confirmed the `UpdateCheck` Run-key value associated with the downloaded PowerShell script.
+
+![Registry evidence showing UpdateCheck persistence](evidence/screenshots/11-registry-persistence-evidence.png)
+
+### Deleted File Activity
+
+USN Journal analysis preserved the lifecycle of `project-notes.txt`, including its creation, data write and subsequent deletion, despite the filename no longer being available through the parsed MFT.
+
+![USN Journal evidence showing deleted file activity](evidence/screenshots/12-usn-deleted-file-evidence.png)
+
+### Volatile Memory Corroboration
+
+Volatility recovered the Notepad process with `update-check.ps1` supplied on its command line, independently corroborating activity identified through disk-based artifacts.
+
+![Volatility command-line evidence](evidence/screenshots/13-memory-process-command-lines.png)
+
+### Consolidated Forensic Timeline
+
+Significant events from independent forensic sources were normalized and correlated into a consolidated UTC timeline.
+
+![Consolidated forensic timeline](evidence/screenshots/14-consolidated-forensic-timeline.png)
+
+The complete curated screenshot set and timeline exports are available in the [`evidence`](evidence/) directory.
 
 ## Repository Structure
 
